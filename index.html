@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ปากแพรกบ้านเรา | เมืองเก่าที่มีเรื่องเล่า</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Noto+Serif+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Kanit',sans-serif;
+    background:#f4efe7;
+    color:#29241f;
+    line-height:1.8;
+}
+
+:root{
+    --brown:#49352b;
+    --dark:#211b17;
+    --cream:#f4efe7;
+    --paper:#fffaf2;
+    --gold:#b58b50;
+    --muted:#766b61;
+    --line:#ded2c2;
+}
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(33,27,23,.88);
+    backdrop-filter:blur(15px);
+    color:white;
+}
+
+.logo{
+    font-family:'Noto Serif Thai',serif;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+.navbar a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:28px;
+    font-size:14px;
+    opacity:.9;
+    transition:.3s;
+}
+
+.navbar a:hover{
+    color:#e5c58e;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    background:
+        linear-gradient(90deg,rgba(25,20,16,.92),rgba(25,20,16,.45),rgba(25,20,16,.15)),
+        url("https://www.paiduaykan.com/wp-content/uploads/2022/12/5-DSC09160-800x533.jpg") center/cover;
+}
+
+.hero-content{
+    width:min(1100px,90%);
+    margin:auto;
+    color:white;
+    padding-top:70px;
+}
+
+.hero-tag{
+    display:inline-block;
+    padding:7px 16px;
+    border:1px solid rgba(255,255,255,.5);
+    border-radius:50px;
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:'Noto Serif Thai',serif;
+    font-size:clamp(48px,8vw,95px);
+    line-height:1.15;
+    max-width:850px;
+}
+
+.hero p{
+    max-width:650px;
+    margin-top:25px;
+    font-size:18px;
+    color:#eee;
+}
+
+.hero-button{
+    display:inline-block;
+    margin-top:35px;
+    padding:13px 27px;
+    border-radius:50px;
+    background:#c29a61;
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.hero-button:hover{
+    background:#a97e48;
+    transform:translateY(-3px);
+}
+
+.section{
+    width:min(1150px,90%);
+    margin:auto;
+    padding:110px 0;
+}
+
+.section-label{
+    color:var(--gold);
+    font-size:14px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.section-title{
+    font-family:'Noto Serif Thai',serif;
+    font-size:clamp(32px,5vw,54px);
+    line-height:1.3;
+    margin-bottom:25px;
+}
+
+.section-intro{
+    max-width:750px;
+    color:var(--muted);
+    font-size:17px;
+}
+
+.source{
+    margin-top:25px;
+    padding:14px 18px;
+    border-left:3px solid var(--gold);
+    background:rgba(181,139,80,.08);
+    color:#766b61;
+    font-size:13px;
+}
+
+.source a{
+    color:#876536;
+    font-weight:500;
+}
+
+.history{
+    background:var(--paper);
+}
+
+.history-grid{
+    margin-top:55px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.history-image{
+    width:100%;
+    height:520px;
+    object-fit:cover;
+    border-radius:4px;
+    box-shadow:20px 20px 0 #e4d5c1;
+}
+
+.history-text p{
+    margin-bottom:20px;
+    color:#5d554e;
+}
+
+.quote{
+    margin:30px 0;
+    padding:30px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    font-family:'Noto Serif Thai',serif;
+    font-size:21px;
+    color:var(--brown);
+}
+
+.timeline{
+    position:relative;
+    margin-top:60px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:15px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:var(--line);
+}
+
+.timeline-item{
+    position:relative;
+    padding-left:55px;
+    margin-bottom:50px;
+}
+
+.timeline-item:before{
+    content:"";
+    position:absolute;
+    left:8px;
+    top:8px;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:var(--gold);
+    border:4px solid var(--cream);
+    box-shadow:0 0 0 1px var(--gold);
+}
+
+.timeline-year{
+    color:var(--gold);
+    font-weight:600;
+    font-size:14px;
+}
+
+.timeline h3{
+    font-family:'Noto Serif Thai',serif;
+    font-size:25px;
+    margin:5px 0;
+}
+
+.architecture{
+    background:var(--dark);
+    color:white;
+}
+
+.architecture .section-intro{
+    color:#c8c0b9;
+}
+
+.architecture-grid{
+    margin-top:55px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.arch-card{
+    background:#302823;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.arch-card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    display:block;
+}
+
+.arch-card-content{
+    padding:25px;
+}
+
+.arch-card h3{
+    font-family:'Noto Serif Thai',serif;
+    font-size:23px;
+    margin-bottom:8px;
+}
+
+.arch-card p{
+    color:#bcb3aa;
+    font-size:14px;
+}
+
+.community{
+    background:#e9dfd1;
+}
+
+.feature-grid{
+    margin-top:55px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    background:var(--paper);
+    padding:35px 28px;
+    border-radius:3px;
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-7px);
+    box-shadow:0 15px 35px rgba(50,35,20,.1);
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.feature h3{
+    font-family:'Noto Serif Thai',serif;
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+.gallery{
+    background:var(--paper);
+}
+
+.gallery-grid{
+    margin-top:55px;
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    grid-auto-rows:220px;
+    gap:15px;
+}
+
+.gallery-item{
+    overflow:hidden;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.06);
+}
+
+.g1{
+    grid-column:span 7;
+    grid-row:span 2;
+}
+
+.g2{
+    grid-column:span 5;
+}
+
+.g3{
+    grid-column:span 5;
+}
+
+.g4{
+    grid-column:span 4;
+}
+
+.g5{
+    grid-column:span 8;
+}
+
+.walk{
+    background:#f0e8dd;
+}
+
+.walk-box{
+    margin-top:55px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:var(--paper);
+}
+
+.walk-image{
+    min-height:500px;
+    background:url("https://www.paidooo.com/wp-content/uploads/2020/07/%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B9%81%E0%B8%9E%E0%B8%A3%E0%B8%81.jpg") center/cover;
+}
+
+.walk-content{
+    padding:55px;
+}
+
+.walk-step{
+    display:flex;
+    gap:20px;
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.number{
+    width:35px;
+    height:35px;
+    flex:none;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--brown);
+    color:white;
+}
+
+.walk-step h3{
+    font-size:18px;
+}
+
+.walk-step p{
+    font-size:14px;
+    color:var(--muted);
+}
+
+.final{
+    min-height:65vh;
+    display:flex;
+    align-items:center;
+    text-align:center;
+    background:
+        linear-gradient(rgba(30,24,20,.75),rgba(30,24,20,.88)),
+        url("https://media.readthecloud.co/wp-content/uploads/2023/01/29072559/pak-phraek-kanchanaburi-12-1.webp") center/cover;
+    color:white;
+}
+
+.final-content{
+    width:min(800px,90%);
+    margin:auto;
+}
+
+.final h2{
+    font-family:'Noto Serif Thai',serif;
+    font-size:clamp(38px,6vw,70px);
+    line-height:1.3;
+}
+
+.final p{
+    margin-top:20px;
+    color:#ddd;
+}
+
+footer{
+    background:#191511;
+    color:#a69d94;
+    padding:50px 6%;
+}
+
+.footer-grid{
+    width:min(1150px,100%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:50px;
+}
+
+footer h3{
+    color:white;
+    font-family:'Noto Serif Thai',serif;
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+footer p{
+    font-size:13px;
+}
+
+.footer-source{
+    margin-top:20px;
+}
+
+.footer-source a{
+    color:#c7a36e;
+    text-decoration:none;
+}
+
+@media(max-width:850px){
+
+    .navbar{
+        padding:15px 5%;
+    }
+
+    .navbar nav{
+        display:none;
+    }
+
+    .history-grid,
+    .walk-box{
+        grid-template-columns:1fr;
+    }
+
+    .architecture-grid,
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .history-image{
+        height:400px;
+    }
+
+    .walk-image{
+        min-height:350px;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+        grid-auto-rows:200px;
+    }
+
+    .g1,
+    .g2,
+    .g3,
+    .g4,
+    .g5{
+        grid-column:span 1;
+        grid-row:span 1;
+    }
+
+    .g1{
+        grid-column:span 2;
+        grid-row:span 2;
+    }
+
+    .g5{
+        grid-column:span 2;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">ปากแพรกบ้านเรา</div>
+    <nav>
+        <a href="#history">เรื่องราว</a>
+        <a href="#architecture">บ้านเก่า</a>
+        <a href="#community">วิถีชุมชน</a>
+        <a href="#gallery">แกลเลอรี</a>
+        <a href="#walk">เดินเที่ยว</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <span class="hero-tag">PAK PHRAEK • KANCHANABURI</span>
+        <h1>เมืองเก่าที่<br>ยังมีลมหายใจ</h1>
+        <p>
+            เรื่องราวของชุมชนปากแพรก ย่านประวัติศาสตร์ของกาญจนบุรี
+            ที่บ้านเก่า ถนนสายเดิม และวิถีชีวิตของผู้คนยังคงบอกเล่าเรื่องราวจากอดีตถึงปัจจุบัน
+        </p>
+        <a class="hero-button" href="#history">เริ่มเดินทาง →</a>
+    </div>
+</section>
+
+<section class="section history" id="history">
+    <div class="section-label">01 / HISTORY</div>
+    <h2 class="section-title">ปากแพรก<br>ไม่ได้เป็นแค่ถนนเก่า</h2>
+    <p class="section-intro">
+        ปากแพรกคือพื้นที่ที่ประวัติศาสตร์ของเมืองกาญจนบุรีมาบรรจบกับชีวิตประจำวัน
+        ทั้งการตั้งเมือง การค้า สถาปัตยกรรม และเรื่องราวจากสงครามโลกครั้งที่ 2
+    </p>
+
+    <div class="history-grid">
+        <img class="history-image" src="https://www.paiduaykan.com/wp-content/uploads/2022/12/5-DSC09160-800x533.jpg" alt="ถนนปากแพรก">
+
+        <div class="history-text">
+            <p>
+                สำนักงานจังหวัดกาญจนบุรีระบุว่า ชุมชนปากแพรกและถนนสายปากแพรก
+                เป็นชุมชนเก่าแก่ที่สุดของเมืองกาญจนบุรี อาคารบ้านเรือนเรียงรายตามแนวกำแพงเมือง
+                และมีความเชื่อมโยงกับประวัติศาสตร์การก่อตั้งเมืองในยุคต้นกรุงรัตนโกสินทร์
+            </p>
+
+            <p>
+                พื้นที่ปากแพรกมีความสำคัญเนื่องจากเป็นบริเวณที่แม่น้ำสองสายมาบรรจบกัน
+                และในช่วงต้นกรุงรัตนโกสินทร์ เมืองกาญจนบุรีได้ย้ายมาตั้งบริเวณนี้
+                ก่อนมีการก่อสร้างกำแพงเมืองและป้อมปราการอย่างถาวรในสมัยรัชกาลที่ 3
+            </p>
+
+            <div class="quote">
+                “เดินหนึ่งถนน แต่ได้เห็นเรื่องราวหลายยุคสมัย”
+            </div>
+
+            <div class="source">
+                แหล่งข้อมูล:
+                <a href="https://ww2.kanchanaburi.go.th/travel/detail/47" target="_blank">
+                    สำนักงานจังหวัดกาญจนบุรี
+                </a>
+                และ
+                <a href="https://ww2.kanchanaburi.go.th/content/history_karn" target="_blank">
+                    ประวัติความเป็นมาจังหวัดกาญจนบุรี
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-label">02 / TIMELINE</div>
+    <h2 class="section-title">เรื่องราวที่ค่อย ๆ<br>สร้างเมืองปากแพรก</h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <div class="timeline-year">ต้นกรุงรัตนโกสินทร์</div>
+            <h3>ย้ายเมืองมายังปากแพรก</h3>
+            <p>
+                หลังสงครามในช่วงต้นกรุงรัตนโกสินทร์ มีการย้ายที่ตั้งเมืองกาญจนบุรี
+                มายังบริเวณปากแพรก ซึ่งเป็นจุดยุทธศาสตร์และอยู่บริเวณที่แม่น้ำมาบรรจบกัน
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">พ.ศ. 2374</div>
+            <h3>สร้างกำแพงเมืองอย่างถาวร</h3>
+            <p>
+                ในสมัยพระบาทสมเด็จพระนั่งเกล้าเจ้าอยู่หัว
+                มีการก่อสร้างกำแพงเมืองและป้อมปราการขึ้นอย่างถาวร
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">รัชกาลที่ 4 เป็นต้นมา</div>
+            <h3>ย่านการค้าเติบโต</h3>
+            <p>
+                ชุมชนปากแพรกพัฒนาขึ้นเป็นย่านการค้า
+                และเกิดอาคารบ้านเรือนที่มีรูปแบบสถาปัตยกรรมผสมผสานระหว่างตะวันออกและตะวันตก
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-year">ปัจจุบัน</div>
+            <h3>เมืองเก่ากับชีวิตยุคใหม่</h3>
+            <p>
+                อาคารเก่า ร้านค้า และวิถีชุมชนยังคงอยู่ร่วมกับชีวิตประจำวัน
+                ทำให้ปากแพรกกลายเป็นพื้นที่ท่องเที่ยวเชิงประวัติศาสตร์และวัฒนธรรม
+            </p>
+        </div>
+
+    </div>
+
+    <div class="source">
+        แหล่งข้อมูล:
+        <a href="https://ww2.kanchanaburi.go.th/content/history_karn" target="_blank">
+            สำนักงานจังหวัดกาญจนบุรี
+        </a>
+        และ
+        <a href="https://thai.tourismthailand.org/Articles/%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%84%E0%B8%99%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%94%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%84%E0%B9%88%E0%B8%B3%E0%B8%84%E0%B8%B7%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%8A%E0%B8%99%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B9%81%E0%B8%9E%E0%B8%A3%E0%B8%81-%E0%B8%93-%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%8D%E0%B8%88%E0%B8%99%E0%B9%8C" target="_blank">
+            การท่องเที่ยวแห่งประเทศไทย
+        </a>
+    </div>
+</section>
+
+<section class="section architecture" id="architecture">
+    <div class="section-label">03 / ARCHITECTURE</div>
+    <h2 class="section-title">บ้านเก่า<br>ที่เล่าเรื่องแทนผู้คน</h2>
+    <p class="section-intro">
+        จุดเด่นของปากแพรกคืออาคารเก่าและรูปแบบสถาปัตยกรรมที่สะท้อนการผสมผสาน
+        ระหว่างวัฒนธรรมตะวันออกและตะวันตก
+    </p>
+
+    <div class="architecture-grid">
+
+        <article class="arch-card">
+            <img src="https://media.readthecloud.co/wp-content/uploads/2023/01/29072559/pak-phraek-kanchanaburi-12-1.webp" alt="อาคารเก่าปากแพรก">
+            <div class="arch-card-content">
+                <h3>ตะวันออกพบตะวันตก</h3>
+                <p>
+                    อาคารในย่านปากแพรกมีรูปแบบที่ผสมผสานองค์ประกอบทางสถาปัตยกรรม
+                    จากหลายวัฒนธรรม สะท้อนประวัติศาสตร์ของชุมชนการค้า
+                </p>
+            </div>
+        </article>
+
+        <article class="arch-card">
+            <img src="https://cache2.travelfish.org/b/assets/2015/gallery/large/gallery_sight_large_35_1486782467.jpg" alt="บ้านไม้เก่าปากแพรก">
+            <div class="arch-card-content">
+                <h3>รายละเอียดของบ้านไม้</h3>
+                <p>
+                    บ้านไม้เก่า ประตู หน้าต่าง และระเบียง
+                    เป็นรายละเอียดเล็ก ๆ ที่ช่วยให้เห็นบรรยากาศของชุมชนในอดีต
+                </p>
+            </div>
+        </article>
+
+        <article class="arch-card">
+            <img src="https://www.wowtgt.com/images/editor/%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B9%81%E0%B8%9E%E0%B8%A3%E0%B8%817_%E0%B8%AA%E0%B8%B8%E0%B8%A1%E0%B8%B4%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%99.jpg" alt="อาคารพาณิชย์ปากแพรก">
+            <div class="arch-card-content">
+                <h3>บ้านกับการค้าขาย</h3>
+                <p>
+                    อาคารบางหลังทำหน้าที่เป็นทั้งพื้นที่อยู่อาศัยและพื้นที่ค้าขาย
+                    ทำให้ถนนปากแพรกยังคงมีกลิ่นอายของย่านการค้าเก่า
+                </p>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="source">
+        แหล่งข้อมูล:
+        <a href="https://thai.tourismthailand.org/Articles/%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%84%E0%B8%99%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%94%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%84%E0%B9%88%E0%B8%B3%E0%B8%84%E0%B8%B7%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%8A%E0%B8%99%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B9%81%E0%B8%9E%E0%B8%A3%E0%B8%81-%E0%B8%93-%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%8D%E0%B8%88%E0%B8%99%E0%B9%8C" target="_blank">
+            การท่องเที่ยวแห่งประเทศไทย
+        </a>
+    </div>
+</section>
+
+<section class="section community" id="community">
+    <div class="section-label">04 / COMMUNITY</div>
+    <h2 class="section-title">เสน่ห์ไม่ได้อยู่แค่ในอาคาร</h2>
+    <p class="section-intro">
+        ปากแพรกยังเป็นชุมชนที่มีชีวิต ผู้คน ร้านค้า อาหาร และกิจกรรมต่าง ๆ
+        ทำให้พื้นที่ประวัติศาสตร์แห่งนี้ยังคงมีความเคลื่อนไหวอยู่เสมอ
+    </p>
+
+    <div class="feature-grid">
+
+        <div class="feature">
+            <div class="icon">🏘️</div>
+            <h3>วิถีชุมชน</h3>
+            <p>
+                อาคารเก่าและร้านค้าอยู่ร่วมกับชีวิตประจำวันของผู้คน
+                ทำให้บรรยากาศของเมืองเก่ายังคงมีชีวิตชีวา
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">🍜</div>
+            <h3>อาหารและร้านค้า</h3>
+            <p>
+                บริเวณชุมชนมีร้านค้า อาหารท้องถิ่น และขนมที่ช่วยเติมสีสัน
+                ให้กับการเดินเที่ยวในย่านปากแพรก
+            </p>
+        </div>
+
+        <div class="feature">
+            <div class="icon">🎭</div>
+            <h3>ถนนคนเดิน</h3>
+            <p>
+                มีการจัดกิจกรรมถนนคนเดินในวันเสาร์
+                พร้อมสินค้า อาหาร และกิจกรรมจากคนในชุมชน
+            </p>
+        </div>
+
+    </div>
+
+    <div class="source">
+        แหล่งข้อมูล:
+        <a href="https://thai.tourismthailand.org/Articles/%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%84%E0%B8%99%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%94%E0%B9%80%E0%B8%9E%E0%B8%A5%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%84%E0%B9%88%E0%B8%B3%E0%B8%84%E0%B8%B7%E0%B8%99%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B9%80%E0%B8%AA%E0%B8%B2%E0%B8%A3%E0%B9%8C-%E0%B8%8A%E0%B8%B8%E0%B8%A1%E0%B8%8A%E0%B8%99%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B9%81%E0%B8%9E%E0%B8%A3%E0%B8%81-%E0%B8%93-%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B8%81%E0%B8%B2%E0%B8%8D%E0%B8%88%E0%B8%99%E0%B9%8C" target="_blank">
+            การท่องเที่ยวแห่งประเทศไทย
+        </a>
+        และ
+        <a href="https://ww2.kanchanaburi.go.th/travel/detail/47" target="_blank">
+            สำนักงานจังหวัดกาญจนบุรี
+        </a>
+    </div>
+</section>
+
+<section class="section gallery" id="gallery">
+    <div class="section-label">05 / GALLERY</div>
+    <h2 class="section-title">ปากแพรก<br>ผ่านมุมมองของภาพถ่าย</h2>
+    <p class="section-intro">
+        รายละเอียดของบ้าน ถนน และบรรยากาศรอบตัวคือสิ่งที่ทำให้ปากแพรกมีเอกลักษณ์
+    </p>
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item g1">
+            <img src="https://www.paidooo.com/wp-content/uploads/2020/07/%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B9%81%E0%B8%9E%E0%B8%A3%E0%B8%81.jpg" alt="ถนนปากแพรก">
+        </div>
+
+        <div class="gallery-item g2">
+            <img src="https://media.readthecloud.co/wp-content/uploads/2023/01/29072559/pak-phraek-kanchanaburi-12-1.webp" alt="อาคารเก่าปากแพรก">
+        </div>
+
+        <div class="gallery-item g3">
+            <img src="https://cache2.travelfish.org/b/assets/2015/gallery/large/gallery_sight_large_35_1486782467.jpg" alt="บ้านไม้เก่าปากแพรก">
+        </div>
+
+        <div class="gallery-item g4">
+            <img src="https://www.wowtgt.com/images/editor/%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B9%81%E0%B8%9E%E0%B8%A3%E0%B8%817_%E0%B8%AA%E0%B8%B8%E0%B8%A1%E0%B8%B4%E0%B8%95%E0%B8%A3%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B8%99.jpg" alt="อาคารพาณิชย์ปากแพรก">
+        </div>
+
+        <div class="gallery-item g5">
+            <img src="https://www.paiduaykan.com/wp-content/uploads/2022/12/5-DSC09160-800x533.jpg" alt="บรรยากาศถนนปากแพรก">
+        </div>
+
+    </div>
+
+    <div class="source">
+        แหล่งภาพ:
+        <a href="https://www.paiduaykan.com/%E0%B8%96%E0%B8%99%E0%B8%99%E0%B8%9B%E0%B8%B2%E0%B8%81%E0%B9%81%E0%B8%9E%E0%B8%A3%E0%B8%81/" target="_blank">ไปด้วยกัน</a>,
+        <a href="https://readthecloud.co/pak-phraek-kanchanaburi/" target="_blank">The Cloud</a>,
+        <a href="https://www.travelfish.org/sight_profile/thailand/central_thailand/kanchanaburi/kanchanaburi/3904" target="_blank">TravelFish</a>
+    </div>
+</section>
+
+<section class="section walk" id="walk">
+    <div class="section-label">06 / WALK</div>
+    <h2 class="section-title">ลองเดินช้า ๆ<br>แล้วมองปากแพรก</h2>
+    <p class="section-intro">
+        เสน่ห์ของชุมชนเก่าอาจไม่ได้อยู่ที่การรีบไปให้ครบทุกจุด
+        แต่อยู่ที่การค่อย ๆ สังเกตสิ่งเล็ก ๆ รอบตัว
+    </p>
+
+    <div class="walk-box">
+
+        <div class="walk-image"></div>
+
+        <div class="walk-content">
+
+            <div class="walk-step">
+                <div class="number">1</div>
+                <div>
+                    <h3>เริ่มจากถนนสายปากแพรก</h3>
+                    <p>
+                        เดินชมอาคารและบ้านเรือนเก่าที่เรียงรายตลอดแนวถนน
+                    </p>
+                </div>
+            </div>
+
+            <div class="walk-step">
+                <div class="number">2</div>
+                <div>
+                    <h3>มองรายละเอียดของอาคาร</h3>
+                    <p>
+                        สังเกตประตู หน้าต่าง ระเบียง และลวดลายของอาคาร
+                    </p>
+                </div>
+            </div>
+
+            <div class="walk-step">
+                <div class="number">3</div>
+                <div>
+                    <h3>สัมผัสวิถีชุมชน</h3>
+                    <p>
+                        ชมร้านค้า อาหาร และกิจกรรมที่เกิดขึ้นในพื้นที่
+                    </p>
+                </div>
+            </div>
+
+            <div class="walk-step">
+                <div class="number">4</div>
+                <div>
+                    <h3>เก็บภาพความทรงจำ</h3>
+                    <p>
+                        ถ่ายภาพมุมที่ชอบ และลองเล่าเรื่องราวของสถานที่ผ่านภาพนั้น
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="source">
+        แหล่งข้อมูล:
+        <a href="https://ww2.kanchanaburi.go.th/travel/detail/47" target="_blank">
+            สำนักงานจังหวัดกาญจนบุรี
+        </a>
+    </div>
+</section>
+
+<section class="final">
+    <div class="final-content">
+        <h2>ปากแพรกบ้านเรา</h2>
+        <p>
+            เพราะเมืองเก่าไม่ได้มีชีวิตอยู่เพียงในหนังสือประวัติศาสตร์
+            แต่อยู่ในถนน อาคาร ผู้คน และเรื่องราวที่เรายังพบเห็นได้ในวันนี้
+        </p>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+
+        <div>
+            <h3>ปากแพรกบ้านเรา</h3>
+            <p>
+                Blog สำหรับเรียนรู้ประวัติศาสตร์ สถาปัตยกรรม
+                และวิถีชีวิตของชุมชนปากแพรก จังหวัดกาญจนบุรี
+            </p>
+        </div>
+
+        <div>
+            <h3>แหล่งข้อมูล</h3>
+            <div class="footer-source">
+                <p>
+                    <a href="https://ww2.kanchanaburi.go.th/travel/detail/47" target="_blank">
+                        สำนักงานจังหวัดกาญจนบุรี
+                    </a>
+                </p>
+                <p>
+                    <a href="https://thai.tourismthailand.org/" target="_blank">
+                        การท่องเที่ยวแห่งประเทศไทย
+                    </a>
+                </p>
+                <p>
+                    <a href="https://readthecloud.co/pak-phraek-kanchanaburi/" target="_blank">
+                        The Cloud
+                    </a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+</body>
+</html>
